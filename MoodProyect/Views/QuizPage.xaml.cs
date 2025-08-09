@@ -14,6 +14,8 @@ public partial class QuizPage : ContentPage
     {
         base.OnAppearing();
         if (BindingContext is ViewModelBase vm)
+
+        if (BindingContext is ViewModels.ViewModelBase vm)
             vm.OnAppearing();
     }
 }
