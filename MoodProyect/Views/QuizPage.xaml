@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:conv="clr-namespace:MoodProyect.Converters"
-             x:Class="MoodProyect.Views.QuizPage"
-             x:Name="quizPage">
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <conv:BoolInverseConverter x:Key="BoolInverseConverter" />
@@ -16,10 +15,7 @@
                      BindableLayout.ItemsSource="{Binding CurrentQuestion.Choices}">
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
-                    <RadioButton Content="{Binding Text}"
-                                 GroupName="choices"
-                                 Command="{Binding BindingContext.SelectChoiceCommand, Source={x:Reference quizPage}}"
-                                 CommandParameter="{Binding .}" />
+
                 </DataTemplate>
             </BindableLayout.ItemTemplate>
         </StackLayout>
