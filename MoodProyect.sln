@@ -5,12 +5,18 @@ VisualStudioVersion = 17.13.35931.197 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoodProyect", "MoodProyect\MoodProyect.csproj", "{B95E0314-BE7A-49EC-B888-79F22A9ADA70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoodProyect.Tests", "MoodProyect.Tests\MoodProyect.Tests.csproj", "{D2F8E273-1234-4E88-9F3E-A1B2C3D4E5F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+                {D2F8E273-1234-4E88-9F3E-A1B2C3D4E5F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+                {D2F8E273-1234-4E88-9F3E-A1B2C3D4E5F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+                {D2F8E273-1234-4E88-9F3E-A1B2C3D4E5F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+                {D2F8E273-1234-4E88-9F3E-A1B2C3D4E5F6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B95E0314-BE7A-49EC-B888-79F22A9ADA70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B95E0314-BE7A-49EC-B888-79F22A9ADA70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B95E0314-BE7A-49EC-B888-79F22A9ADA70}.Release|Any CPU.ActiveCfg = Release|Any CPU
