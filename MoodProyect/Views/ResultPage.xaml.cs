@@ -1,14 +1,12 @@
-using Microsoft.Maui.Controls;
 using MoodProyect.ViewModels;
 
-namespace MoodProyect.Views
+namespace MoodProyect.Views;
+
+public partial class ResultPage : ContentPage
 {
-    public partial class ResultPage : ContentPage
+    public ResultPage(ResultViewModel vm)
     {
-        public ResultPage(ResultViewModel vm)
-        {
-            InitializeComponent();
-            BindingContext = vm;
-        }
+        InitializeComponent();
+        BindingContext = vm;
     }
 }
