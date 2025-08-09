@@ -6,9 +6,6 @@
         <Setter Property="Padding" Value="30" />
     </Style>
 
-    <Style TargetType="Label">
-        <Setter Property="TextColor" Value="#333333" />
-    </Style>
 
     <Style TargetType="Button" x:Key="PrimaryButton">
         <Setter Property="BackgroundColor" Value="#512BD4" />
@@ -18,25 +15,4 @@
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
 
-    <Style TargetType="Entry">
-        <Setter Property="BackgroundColor" Value="White" />
-        <Setter Property="TextColor" Value="#333333" />
-        <Setter Property="PlaceholderColor" Value="#999999" />
-        <Setter Property="HeightRequest" Value="44" />
-    </Style>
-
-    <Style TargetType="Frame">
-        <Setter Property="CornerRadius" Value="12" />
-        <Setter Property="HasShadow" Value="True" />
-        <Setter Property="Padding" Value="20" />
-        <Setter Property="BackgroundColor" Value="White" />
-        <Setter Property="Padding" Value="20" />
-    </Style>
-    <Style TargetType="Label">
-        <Setter Property="TextColor" Value="Black" />
-    </Style>
-    <Style TargetType="Button">
-        <Setter Property="BackgroundColor" Value="#512BD4" />
-        <Setter Property="TextColor" Value="White" />
-    </Style>
 </ResourceDictionary>
