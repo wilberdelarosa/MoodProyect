@@ -2,12 +2,45 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:conv="clr-namespace:MoodProyect.Converters"
+             xmlns:vm="clr-namespace:MoodProyect.ViewModels"
+             x:Class="MoodProyect.Views.QuizPage"
+             x:Name="quizPage"
+             x:DataType="vm:QuizViewModel">
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <conv:BoolInverseConverter x:Key="BoolInverseConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
+    <Grid RowDefinitions="Auto,*,Auto" Padding="20" RowSpacing="20">
+        <ProgressBar Grid.Row="0" Progress="{Binding Progress}" HeightRequest="6" />
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="20">
+                <Frame>
+                    <Label Text="{Binding CurrentQuestion.Text}" FontSize="20" FontAttributes="Bold" />
+                </Frame>
+                <StackLayout IsVisible="{Binding CurrentQuestion.IsOpen, Converter={StaticResource BoolInverseConverter}}"
+                             BindableLayout.ItemsSource="{Binding CurrentQuestion.Choices}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Button Text="{Binding Text}"
+                                    Style="{StaticResource PrimaryButton}"
+                                    Command="{Binding BindingContext.SelectChoiceCommand, Source={x:Reference quizPage}}"
+                                    CommandParameter="{Binding .}" />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+                <Entry IsVisible="{Binding CurrentQuestion.IsOpen}"
+                       Text="{Binding OpenAnswer}" Placeholder="Escribe tu respuesta" />
+                <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" HorizontalOptions="Center" />
+            </VerticalStackLayout>
+        </ScrollView>
+        <Grid Grid.Row="2" ColumnDefinitions="*,*,*" ColumnSpacing="10">
+            <Button Text="Anterior" Style="{StaticResource PrimaryButton}" Command="{Binding PrevCommand}" />
+            <Button Grid.Column="1" Text="Siguiente" Style="{StaticResource PrimaryButton}" Command="{Binding NextCommand}" />
+            <Button Grid.Column="2" Text="Finalizar" Style="{StaticResource PrimaryButton}" Command="{Binding FinishCommand}" />
+        </Grid>
+    </Grid>
     <VerticalStackLayout Padding="20" Spacing="20">
         <ProgressBar Progress="{Binding Progress}" />
         <Label Text="{Binding CurrentQuestion.Text}" FontSize="18" />

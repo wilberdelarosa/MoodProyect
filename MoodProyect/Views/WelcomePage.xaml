@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MoodProyect.ViewModels"
+             x:Class="MoodProyect.Views.WelcomePage"
+             x:DataType="vm:WelcomeViewModel">
+    <Grid RowDefinitions="*,Auto" Padding="40" RowSpacing="40">
+        <VerticalStackLayout Grid.Row="0" Spacing="15" VerticalOptions="Center">
+            <Label Text="MoodCoach" FontSize="32" FontAttributes="Bold" HorizontalOptions="Center" />
+            <Label Text="Descubre consejos personalizados según tu estado de ánimo." FontSize="18" TextColor="#666666" HorizontalOptions="Center" />
+        </VerticalStackLayout>
+        <Button Grid.Row="1" Text="Comenzar" Style="{StaticResource PrimaryButton}" Command="{Binding StartCommand}" />
+    </Grid>
 
-    <VerticalStackLayout Padding="20" Spacing="20">
-        <Label Text="Bienvenido a MoodCoach" FontSize="24" HorizontalOptions="Center" />
-        <Button Text="Empezar" Command="{Binding StartCommand}" />
-    </VerticalStackLayout>
+  
 </ContentPage>
