@@ -13,8 +13,6 @@ public partial class QuizPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        if (BindingContext is ViewModelBase vm)
-
         if (BindingContext is ViewModels.ViewModelBase vm)
             vm.OnAppearing();
     }

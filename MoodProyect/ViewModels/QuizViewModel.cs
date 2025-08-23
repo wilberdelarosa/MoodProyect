@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using MoodProyect.Models;
 using MoodProyect.Services;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace MoodProyect.ViewModels;
 
@@ -18,9 +19,6 @@ public partial class QuizViewModel : ViewModelBase
 
     [ObservableProperty]
     string? openAnswer;
-
-    [ObservableProperty]
-    Choice? selectedChoice;
 
     public Question? CurrentQuestion => CurrentIndex >= 0 && CurrentIndex < Questions.Count ? Questions[CurrentIndex] : null;
     public double Progress => Questions.Count == 0 ? 0 : (CurrentIndex + 1) / (double)Questions.Count;
@@ -45,16 +43,27 @@ public partial class QuizViewModel : ViewModelBase
     partial void OnCurrentIndexChanged(int value)
     {
         OpenAnswer = CurrentQuestion?.Answer;
-        SelectedChoice = null;
     }
 
     [RelayCommand]
     void SelectChoice(Choice choice)
     {
-        if (CurrentQuestion != null)
+        if (CurrentQuestion?.Choices == null)
+            return;
+
+        if (CurrentQuestion.AllowsMultiple)
         {
+            choice.IsSelected = !choice.IsSelected;
+            CurrentQuestion.Answer = string.Join(", ", CurrentQuestion.Choices
+                .Where(c => c.IsSelected)
+                .Select(c => c.Text));
+        }
+        else
+        {
+            foreach (var c in CurrentQuestion.Choices)
+                c.IsSelected = false;
+            choice.IsSelected = true;
             CurrentQuestion.Answer = choice.Text;
-            SelectedChoice = choice;
         }
     }
 

@@ -13,6 +13,7 @@ public class QuestionService : IQuestionService
                 Id = "1",
                 Text = "¿Cómo te sientes ahora?",
                 IsOpen = false,
+                AllowsMultiple = true,
                 Choices = new List<Choice>
                 {
                     new() { Text = "Bien", Value = 2 },
