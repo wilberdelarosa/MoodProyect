@@ -26,7 +26,13 @@
                             <Button Text="{Binding Text}"
                                     Style="{StaticResource PrimaryButton}"
                                     Command="{Binding BindingContext.SelectChoiceCommand, Source={x:Reference quizPage}}"
-                                    CommandParameter="{Binding .}" />
+                                    CommandParameter="{Binding .}">
+                                <Button.Triggers>
+                                    <DataTrigger TargetType="Button" Binding="{Binding IsSelected}" Value="True">
+                                        <Setter Property="BackgroundColor" Value="#8e8cd8" />
+                                    </DataTrigger>
+                                </Button.Triggers>
+                            </Button>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </StackLayout>
@@ -41,24 +47,4 @@
             <Button Grid.Column="2" Text="Finalizar" Style="{StaticResource PrimaryButton}" Command="{Binding FinishCommand}" />
         </Grid>
     </Grid>
-    <VerticalStackLayout Padding="20" Spacing="20">
-        <ProgressBar Progress="{Binding Progress}" />
-        <Label Text="{Binding CurrentQuestion.Text}" FontSize="18" />
-        <StackLayout IsVisible="{Binding CurrentQuestion.IsOpen, Converter={StaticResource BoolInverseConverter}}"
-                     BindableLayout.ItemsSource="{Binding CurrentQuestion.Choices}">
-            <BindableLayout.ItemTemplate>
-                <DataTemplate>
-
-                </DataTemplate>
-            </BindableLayout.ItemTemplate>
-        </StackLayout>
-        <Entry IsVisible="{Binding CurrentQuestion.IsOpen}"
-               Text="{Binding OpenAnswer}" Placeholder="Escribe tu respuesta" />
-        <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
-        <HorizontalStackLayout>
-            <Button Text="Anterior" Command="{Binding PrevCommand}" />
-            <Button Text="Siguiente" Command="{Binding NextCommand}" />
-            <Button Text="Finalizar" Command="{Binding FinishCommand}" />
-        </HorizontalStackLayout>
-    </VerticalStackLayout>
 </ContentPage>
